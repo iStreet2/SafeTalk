@@ -13,8 +13,6 @@ class TabBarController: UITabBarController {
     let image: UIImageView = {
         var image = UIImageView(image: UIImage(named: "BackgroundShapes"))
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.clipsToBounds = true
-        image.contentMode = .scaleAspectFit
         return image
     }()
 
