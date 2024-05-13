@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class NotasViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,9 +15,4 @@ class ViewController: UIViewController {
     }
 
 
-}
-
-
-#Preview{
-    ViewController()
 }
