@@ -12,6 +12,7 @@
 		3B2208722BF2ABED00CF6865 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208712BF2ABED00CF6865 /* ViewController.swift */; };
 		3B2208772BF2ABEF00CF6865 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B2208762BF2ABEF00CF6865 /* Assets.xcassets */; };
 		3B22087A2BF2ABEF00CF6865 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3B2208792BF2ABEF00CF6865 /* Base */; };
+		3B2208822BF2ACEB00CF6865 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208812BF2ACEB00CF6865 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3B2208762BF2ABEF00CF6865 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B2208792BF2ABEF00CF6865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B22087B2BF2ABEF00CF6865 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B2208812BF2ACEB00CF6865 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3B22086D2BF2ABED00CF6865 /* AppDelegate.swift */,
 				3B22086F2BF2ABED00CF6865 /* SceneDelegate.swift */,
 				3B2208712BF2ABED00CF6865 /* ViewController.swift */,
+				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
 				3B2208762BF2ABEF00CF6865 /* Assets.xcassets */,
 				3B2208782BF2ABEF00CF6865 /* LaunchScreen.storyboard */,
 				3B22087B2BF2ABEF00CF6865 /* Info.plist */,
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B2208722BF2ABED00CF6865 /* ViewController.swift in Sources */,
+				3B2208822BF2ACEB00CF6865 /* TabBarController.swift in Sources */,
 				3B22086E2BF2ABED00CF6865 /* AppDelegate.swift in Sources */,
 				3B2208702BF2ABED00CF6865 /* SceneDelegate.swift in Sources */,
 			);
