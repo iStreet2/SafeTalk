@@ -15,6 +15,13 @@
 		3B2208822BF2ACEB00CF6865 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208812BF2ACEB00CF6865 /* TabBarController.swift */; };
 		3B2208842BF2AE5300CF6865 /* GravacoesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */; };
 		3B2208862BF2AE6E00CF6865 /* ExpectativasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208852BF2AE6E00CF6865 /* ExpectativasViewController.swift */; };
+		3B2208902BF3C0FE00CF6865 /* TsukimiRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B22088B2BF3C0FE00CF6865 /* TsukimiRounded-Light.ttf */; };
+		3B2208912BF3C0FE00CF6865 /* TsukimiRounded-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B22088C2BF3C0FE00CF6865 /* TsukimiRounded-Medium.ttf */; };
+		3B2208922BF3C0FE00CF6865 /* TsukimiRounded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B22088D2BF3C0FE00CF6865 /* TsukimiRounded-Regular.ttf */; };
+		3B2208932BF3C0FE00CF6865 /* TsukimiRounded-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B22088E2BF3C0FE00CF6865 /* TsukimiRounded-SemiBold.ttf */; };
+		3B2208942BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B22088F2BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf */; };
+		3B2208962BF3C10D00CF6865 /* TwinkleStar-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B2208952BF3C10D00CF6865 /* TwinkleStar-Regular.ttf */; };
+		3B2208982BF3D98900CF6865 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208972BF3D98900CF6865 /* EnumFonts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +35,13 @@
 		3B2208812BF2ACEB00CF6865 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravacoesViewController.swift; sourceTree = "<group>"; };
 		3B2208852BF2AE6E00CF6865 /* ExpectativasViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectativasViewController.swift; sourceTree = "<group>"; };
+		3B22088B2BF3C0FE00CF6865 /* TsukimiRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TsukimiRounded-Light.ttf"; sourceTree = "<group>"; };
+		3B22088C2BF3C0FE00CF6865 /* TsukimiRounded-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TsukimiRounded-Medium.ttf"; sourceTree = "<group>"; };
+		3B22088D2BF3C0FE00CF6865 /* TsukimiRounded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TsukimiRounded-Regular.ttf"; sourceTree = "<group>"; };
+		3B22088E2BF3C0FE00CF6865 /* TsukimiRounded-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TsukimiRounded-SemiBold.ttf"; sourceTree = "<group>"; };
+		3B22088F2BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TsukimiRounded-Bold.ttf"; sourceTree = "<group>"; };
+		3B2208952BF3C10D00CF6865 /* TwinkleStar-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TwinkleStar-Regular.ttf"; sourceTree = "<group>"; };
+		3B2208972BF3D98900CF6865 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +74,56 @@
 		3B22086C2BF2ABED00CF6865 /* SafeTalk */ = {
 			isa = PBXGroup;
 			children = (
+				3B2208882BF3C08E00CF6865 /* Fonts */,
+				3B2208872BF3C04100CF6865 /* ViewControllers */,
 				3B22086D2BF2ABED00CF6865 /* AppDelegate.swift */,
 				3B22086F2BF2ABED00CF6865 /* SceneDelegate.swift */,
-				3B2208712BF2ABED00CF6865 /* NotasViewController.swift */,
-				3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */,
-				3B2208852BF2AE6E00CF6865 /* ExpectativasViewController.swift */,
-				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
 				3B2208762BF2ABEF00CF6865 /* Assets.xcassets */,
 				3B2208782BF2ABEF00CF6865 /* LaunchScreen.storyboard */,
 				3B22087B2BF2ABEF00CF6865 /* Info.plist */,
 			);
 			path = SafeTalk;
+			sourceTree = "<group>";
+		};
+		3B2208872BF3C04100CF6865 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B2208852BF2AE6E00CF6865 /* ExpectativasViewController.swift */,
+				3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */,
+				3B2208712BF2ABED00CF6865 /* NotasViewController.swift */,
+				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3B2208882BF3C08E00CF6865 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3B22088A2BF3C0E600CF6865 /* TsukimiRounded */,
+				3B2208892BF3C0D500CF6865 /* TwinkleStar */,
+				3B2208972BF3D98900CF6865 /* EnumFonts.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		3B2208892BF3C0D500CF6865 /* TwinkleStar */ = {
+			isa = PBXGroup;
+			children = (
+				3B2208952BF3C10D00CF6865 /* TwinkleStar-Regular.ttf */,
+			);
+			path = TwinkleStar;
+			sourceTree = "<group>";
+		};
+		3B22088A2BF3C0E600CF6865 /* TsukimiRounded */ = {
+			isa = PBXGroup;
+			children = (
+				3B22088F2BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf */,
+				3B22088B2BF3C0FE00CF6865 /* TsukimiRounded-Light.ttf */,
+				3B22088C2BF3C0FE00CF6865 /* TsukimiRounded-Medium.ttf */,
+				3B22088D2BF3C0FE00CF6865 /* TsukimiRounded-Regular.ttf */,
+				3B22088E2BF3C0FE00CF6865 /* TsukimiRounded-SemiBold.ttf */,
+			);
+			path = TsukimiRounded;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -133,6 +186,12 @@
 			files = (
 				3B2208772BF2ABEF00CF6865 /* Assets.xcassets in Resources */,
 				3B22087A2BF2ABEF00CF6865 /* Base in Resources */,
+				3B2208962BF3C10D00CF6865 /* TwinkleStar-Regular.ttf in Resources */,
+				3B2208932BF3C0FE00CF6865 /* TsukimiRounded-SemiBold.ttf in Resources */,
+				3B2208922BF3C0FE00CF6865 /* TsukimiRounded-Regular.ttf in Resources */,
+				3B2208912BF3C0FE00CF6865 /* TsukimiRounded-Medium.ttf in Resources */,
+				3B2208902BF3C0FE00CF6865 /* TsukimiRounded-Light.ttf in Resources */,
+				3B2208942BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +205,7 @@
 				3B2208722BF2ABED00CF6865 /* NotasViewController.swift in Sources */,
 				3B2208822BF2ACEB00CF6865 /* TabBarController.swift in Sources */,
 				3B2208862BF2AE6E00CF6865 /* ExpectativasViewController.swift in Sources */,
+				3B2208982BF3D98900CF6865 /* EnumFonts.swift in Sources */,
 				3B22086E2BF2ABED00CF6865 /* AppDelegate.swift in Sources */,
 				3B2208702BF2ABED00CF6865 /* SceneDelegate.swift in Sources */,
 				3B2208842BF2AE5300CF6865 /* GravacoesViewController.swift in Sources */,
@@ -299,7 +359,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -327,7 +387,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

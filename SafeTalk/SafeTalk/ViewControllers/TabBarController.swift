@@ -52,6 +52,7 @@ class TabBarController: UITabBarController {
         notasViewController.tabBarItem.title = "Notas"
         notasViewController.tabBarItem.image = UIImage(systemName: "book.closed")
         notasViewController.tabBarItem.selectedImage = UIImage(systemName: "book.closed.fill")
+//        notasViewController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: fonts.twinkle.rawValue, size: 20)!]
         
         //Inicialização da segunda View no segundo item da TabBar
         let gravacoesViewController = UINavigationController(rootViewController: GravacoesViewController())

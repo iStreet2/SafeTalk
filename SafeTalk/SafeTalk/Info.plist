@@ -2,8 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TsukimiRounded-Bold.ttf</string>
+		<string>TsukimiRounded-Light.ttf</string>
+		<string>TsukimiRounded-Medium.ttf</string>
+		<string>TsukimiRounded-Regular.ttf</string>
+		<string>TsukimiRounded-SemiBold.ttf</string>
+		<string>TwinkleStar-Regular.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
+		<key>UIApplicationSupportsTabbedSceneCollection</key>
+		<false/>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
 		<key>UISceneConfigurations</key>
