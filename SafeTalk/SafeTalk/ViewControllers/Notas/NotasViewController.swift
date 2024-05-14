@@ -32,10 +32,8 @@ class NotasViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationTitle()
-        
-        
-        
-        
+        setRightNavigationItem()
+        customizeBackButton()
 
     }
     
@@ -55,8 +53,17 @@ class NotasViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
+    func customizeBackButton(){
+        let backImage = UIImage(systemName: "chevron.left")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+
+    }
+    
     @objc func navigate(){
-        navigationController?.pushViewController(GravacoesViewController(), animated: true)
+        navigationController?.pushViewController(CriarNotaViewController(), animated: true)
     }
 
 

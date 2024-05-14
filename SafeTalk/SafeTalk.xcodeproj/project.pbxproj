@@ -22,6 +22,7 @@
 		3B2208942BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B22088F2BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf */; };
 		3B2208962BF3C10D00CF6865 /* TwinkleStar-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3B2208952BF3C10D00CF6865 /* TwinkleStar-Regular.ttf */; };
 		3B2208982BF3D98900CF6865 /* EnumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2208972BF3D98900CF6865 /* EnumFonts.swift */; };
+		3B978A172BF3E360002E42B6 /* CriarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3B22088F2BF3C0FE00CF6865 /* TsukimiRounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TsukimiRounded-Bold.ttf"; sourceTree = "<group>"; };
 		3B2208952BF3C10D00CF6865 /* TwinkleStar-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TwinkleStar-Regular.ttf"; sourceTree = "<group>"; };
 		3B2208972BF3D98900CF6865 /* EnumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumFonts.swift; sourceTree = "<group>"; };
+		3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarNotaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,9 +90,9 @@
 		3B2208872BF3C04100CF6865 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3B2208852BF2AE6E00CF6865 /* ExpectativasViewController.swift */,
-				3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */,
-				3B2208712BF2ABED00CF6865 /* NotasViewController.swift */,
+				3B978A132BF3E232002E42B6 /* Notas */,
+				3B978A142BF3E23E002E42B6 /* Expectativas */,
+				3B978A152BF3E245002E42B6 /* Gravacoes */,
 				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
 			);
 			path = ViewControllers;
@@ -124,6 +126,31 @@
 				3B22088E2BF3C0FE00CF6865 /* TsukimiRounded-SemiBold.ttf */,
 			);
 			path = TsukimiRounded;
+			sourceTree = "<group>";
+		};
+		3B978A132BF3E232002E42B6 /* Notas */ = {
+			isa = PBXGroup;
+			children = (
+				3B2208712BF2ABED00CF6865 /* NotasViewController.swift */,
+				3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */,
+			);
+			path = Notas;
+			sourceTree = "<group>";
+		};
+		3B978A142BF3E23E002E42B6 /* Expectativas */ = {
+			isa = PBXGroup;
+			children = (
+				3B2208852BF2AE6E00CF6865 /* ExpectativasViewController.swift */,
+			);
+			path = Expectativas;
+			sourceTree = "<group>";
+		};
+		3B978A152BF3E245002E42B6 /* Gravacoes */ = {
+			isa = PBXGroup;
+			children = (
+				3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */,
+			);
+			path = Gravacoes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,6 +231,7 @@
 			files = (
 				3B2208722BF2ABED00CF6865 /* NotasViewController.swift in Sources */,
 				3B2208822BF2ACEB00CF6865 /* TabBarController.swift in Sources */,
+				3B978A172BF3E360002E42B6 /* CriarNotaViewController.swift in Sources */,
 				3B2208862BF2AE6E00CF6865 /* ExpectativasViewController.swift in Sources */,
 				3B2208982BF3D98900CF6865 /* EnumFonts.swift in Sources */,
 				3B22086E2BF2ABED00CF6865 /* AppDelegate.swift in Sources */,
