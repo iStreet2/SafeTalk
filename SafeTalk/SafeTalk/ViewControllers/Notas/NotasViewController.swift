@@ -6,11 +6,19 @@
 //
 
 import UIKit
-import SwiftUI
 
 class NotasViewController: UIViewController {
     
     //Variáveis
+    
+    //Componentes
+    private let notasView: UICollectionView = {
+        let layout = UICollectionViewLayout()
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .white
+        return collectionView
+    }()
     
     let titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -24,20 +32,27 @@ class NotasViewController: UIViewController {
         return titleLabel
     }()
     
-
-
+    //Coisas do CoreData
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var notas: [Nota]?
     
     //Ciclo de vida da NotasViewController
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationTitle()
-        setRightNavigationItem()
-        customizeBackButton()
-
+        setUpUI()
     }
     
     //Funções
+    func setUpUI(){
+        setNavigationTitle()
+        setRightNavigationItem()
+        customizeBackButton()
+        addNotas()
+        
+        //Pegar itens do CoreData
+//        fetchNotas()
+    }
+    
     
     func setNavigationTitle(){
         self.title = "Notas"
@@ -59,15 +74,42 @@ class NotasViewController: UIViewController {
         self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
         self.navigationController?.navigationBar.tintColor = .white
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+    }
+    
+    func addNotas(){
+        for _ in 0...3 {
+            
+        }
+        
+        self.view.addSubview(notasView)
+        notasView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            notasView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            notasView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            notasView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 20),
+            notasView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,constant: -20)
+        ])
 
     }
     
     @objc func navigate(){
         navigationController?.pushViewController(CriarNotaViewController(), animated: true)
     }
+    
+    //Funções do CoreData
+    func fetchNotas(){
+        do{
+            self.notas = try context.fetch(Nota.fetchRequest())
 
+        } catch{
+            print("Não foi possivel pegar os items do CoreData, error: \(error)")
+        }
+    }
 
 }
+
+
 
 @available(iOS 17.0, *)
 #Preview{
