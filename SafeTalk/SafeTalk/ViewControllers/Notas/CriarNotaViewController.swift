@@ -10,6 +10,13 @@ import CoreData
 
 class CriarNotaViewController: UIViewController {
     
+    //inicializo minha variável de imagem do fundo
+    let image: UIImageView = {
+        var image = UIImageView(image: UIImage(named: "BackgroundShapes"))
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     let titleLabel: UILabel = {
         let label = UILabel()
         
@@ -29,9 +36,27 @@ class CriarNotaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initBackground()
         setHelloWorld()
         
+        
 //        (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+    }
+    
+    func initBackground(){
+        //Adiciono minha imagem ao fundo da tela e aplico os constraints
+        self.view.addSubview(image)
+        self.view.backgroundColor = .background
+        //Aplicar as constraints
+        NSLayoutConstraint.activate([
+            image.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            image.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            image.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            image.topAnchor.constraint(equalTo: self.view.topAnchor)
+        ])
+        //Mandar uma layer abaixo
+        image.layer.zPosition = -1
         
     }
     

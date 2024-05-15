@@ -18,9 +18,8 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .background
-        initTabBar()
         initBackground()
+        initTabBar()
         configTabBar()
     }
     
@@ -29,11 +28,13 @@ class TabBarController: UITabBarController {
         self.tabBar.barTintColor = .white
         self.tabBar.tintColor = .tabBarItemOrange
         self.tabBar.backgroundColor = .white
+
     }
     
     func initBackground(){
         //Adiciono minha imagem ao fundo da tela e aplico os constraints
         self.view.addSubview(image)
+        self.view.backgroundColor = .background
         //Aplicar as constraints
         NSLayoutConstraint.activate([
             image.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),

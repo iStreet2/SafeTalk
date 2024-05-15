@@ -1,15 +1,13 @@
 //
-//  NotaCollectionViewCell.swift
+//  TestesViewController.swift
 //  SafeTalk
 //
-//  Created by Gabriel Vicentin Negro on 14/05/24.
+//  Created by Gabriel Vicentin Negro on 15/05/24.
 //
 
 import UIKit
 
-class NotaCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier = "NotaCollectionViewCell"
+class TestesViewController: UIViewController {
     
     private let capsuleBody: UIView = {
         let button = UIView()
@@ -39,7 +37,7 @@ class NotaCollectionViewCell: UICollectionViewCell {
         
     }()
     
-    private let noteLabel: UILabel = {
+    private let text: UILabel = {
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +73,7 @@ class NotaCollectionViewCell: UICollectionViewCell {
         return view
     }()
     
-    private let dateLabel: UILabel = {
+    private let dateText: UILabel = {
         
         let label = UILabel()
         
@@ -90,30 +88,19 @@ class NotaCollectionViewCell: UICollectionViewCell {
         
     }()
     
-    public func getNota() -> String{
-        return noteLabel.text ?? "error"
-    }
-    
-    public func getData() -> String{
-        return self.dateLabel.text ?? "error"
-    }
-    
-    public func configure(_ note: String,_ date: String){
-        self.noteLabel.text = note
-        self.dateLabel.text = date
-        self.addNotas()
-    }
-    
-    private func addNotas() {        
-        self.addSubview(capsuleBody)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(capsuleBody)
         NSLayoutConstraint.activate([
-            capsuleBody.leadingAnchor.constraint(equalTo: self.leadingAnchor,constant:30),
-            capsuleBody.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant:-30),
-            capsuleBody.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            capsuleBody.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor,constant:30),
+            capsuleBody.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor,constant:-30),
+            capsuleBody.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
             capsuleBody.bottomAnchor.constraint(equalTo: self.capsuleBody.topAnchor, constant: 100)
         ])
         
-        self.addSubview(capsuleBodyBackground)
+        view.addSubview(capsuleBodyBackground)
         NSLayoutConstraint.activate([
             capsuleBodyBackground.leadingAnchor.constraint(equalTo: self.capsuleBody.leadingAnchor),
             capsuleBodyBackground.trailingAnchor.constraint(equalTo: self.capsuleBody.trailingAnchor),
@@ -122,16 +109,16 @@ class NotaCollectionViewCell: UICollectionViewCell {
         ])
         capsuleBodyBackground.layer.zPosition = -1
         
-        self.addSubview(noteLabel)
+        view.addSubview(text)
         NSLayoutConstraint.activate([
-            noteLabel.leadingAnchor.constraint(equalTo: capsuleBody.leadingAnchor, constant: 20),
-            noteLabel.trailingAnchor.constraint(equalTo: capsuleBody.trailingAnchor, constant: -20),
-            noteLabel.topAnchor.constraint(equalTo: capsuleBody.topAnchor, constant: 10),
-            noteLabel.bottomAnchor.constraint(equalTo: capsuleBody.bottomAnchor, constant: -10)
+            text.leadingAnchor.constraint(equalTo: capsuleBody.leadingAnchor, constant: 20),
+            text.trailingAnchor.constraint(equalTo: capsuleBody.trailingAnchor, constant: -20),
+            text.topAnchor.constraint(equalTo: capsuleBody.topAnchor, constant: 10),
+            text.bottomAnchor.constraint(equalTo: capsuleBody.bottomAnchor, constant: -10)
         
         ])
         
-        self.addSubview(capsuleDate)
+        view.addSubview(capsuleDate)
         NSLayoutConstraint.activate([
             capsuleDate.leadingAnchor.constraint(equalTo: capsuleBody.leadingAnchor, constant: 60),
             capsuleDate.trailingAnchor.constraint(equalTo: capsuleBody.trailingAnchor, constant: -60),
@@ -141,7 +128,7 @@ class NotaCollectionViewCell: UICollectionViewCell {
         ])
         capsuleDate.layer.zPosition = 1
         
-        self.addSubview(capsuleDateBackground)
+        view.addSubview(capsuleDateBackground)
         NSLayoutConstraint.activate([
             capsuleDateBackground.leadingAnchor.constraint(equalTo: capsuleDate.leadingAnchor),
             capsuleDateBackground.trailingAnchor.constraint(equalTo: capsuleDate.trailingAnchor),
@@ -149,22 +136,32 @@ class NotaCollectionViewCell: UICollectionViewCell {
             capsuleDateBackground.bottomAnchor.constraint(equalTo: capsuleDate.bottomAnchor,constant: 5)
         ])
         
-        self.addSubview(dateLabel)
+        view.addSubview(dateText)
         NSLayoutConstraint.activate([
-            dateLabel.leadingAnchor.constraint(equalTo: capsuleDate.leadingAnchor),
-            dateLabel.trailingAnchor.constraint(equalTo: capsuleDate.trailingAnchor),
-            dateLabel.topAnchor.constraint(equalTo: capsuleDate.topAnchor, constant: 5),
-            dateLabel.bottomAnchor.constraint(equalTo: capsuleDate.bottomAnchor, constant: -5)
+            dateText.leadingAnchor.constraint(equalTo: capsuleDate.leadingAnchor),
+            dateText.trailingAnchor.constraint(equalTo: capsuleDate.trailingAnchor),
+            dateText.topAnchor.constraint(equalTo: capsuleDate.topAnchor, constant: 5),
+            dateText.bottomAnchor.constraint(equalTo: capsuleDate.bottomAnchor, constant: -5)
         ])
-        dateLabel.layer.zPosition = 1
+        dateText.layer.zPosition = 1
+        // Do any additional setup after loading the view.
     }
+
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.dateLabel.text = nil
-        self.noteLabel.text = nil
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
     }
-    
-    
+    */
+
 }
 
+@available(iOS 17, *)
+#Preview{
+    return TestesViewController()
+}

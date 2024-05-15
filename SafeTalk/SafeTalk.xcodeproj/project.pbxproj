@@ -25,6 +25,8 @@
 		3B978A172BF3E360002E42B6 /* CriarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */; };
 		3B978A1A2BF3F057002E42B6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A182BF3F057002E42B6 /* Model.xcdatamodeld */; };
 		3B978A442BF40C08002E42B6 /* NotaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A432BF40C08002E42B6 /* NotaCollectionViewCell.swift */; };
+		3BE877A32BF51DDE000ABC38 /* TestesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */; };
+		3BE877A52BF545AA000ABC38 /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarNotaViewController.swift; sourceTree = "<group>"; };
 		3B978A192BF3F057002E42B6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3B978A432BF40C08002E42B6 /* NotaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCollectionViewCell.swift; sourceTree = "<group>"; };
+		3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestesViewController.swift; sourceTree = "<group>"; };
+		3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,7 @@
 				3B978A142BF3E23E002E42B6 /* Expectativas */,
 				3B978A152BF3E245002E42B6 /* Gravacoes */,
 				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
+				3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			children = (
 				3B2208712BF2ABED00CF6865 /* NotasViewController.swift */,
 				3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */,
+				3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */,
 			);
 			path = Notas;
 			sourceTree = "<group>";
@@ -244,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B2208722BF2ABED00CF6865 /* NotasViewController.swift in Sources */,
+				3BE877A32BF51DDE000ABC38 /* TestesViewController.swift in Sources */,
 				3B2208822BF2ACEB00CF6865 /* TabBarController.swift in Sources */,
 				3B978A442BF40C08002E42B6 /* NotaCollectionViewCell.swift in Sources */,
+				3BE877A52BF545AA000ABC38 /* VisualizarNotaViewController.swift in Sources */,
 				3B978A172BF3E360002E42B6 /* CriarNotaViewController.swift in Sources */,
 				3B2208862BF2AE6E00CF6865 /* ExpectativasViewController.swift in Sources */,
 				3B2208982BF3D98900CF6865 /* EnumFonts.swift in Sources */,
