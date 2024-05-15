@@ -10,15 +10,16 @@ import UIKit
 class NotasViewController: UIViewController {
     
     //Coisas do CoreData
-//    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//    var notas: [Nota]?
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        var notas: [Nota]?
     
     //Variáveis
-    //Mandar isso pro NotasViewCollectionViewDataSource
-    //Vou ter uma variavel que eh um objeto dessa classe e vai receber esses dados aqui no meu viewDidLoad.
     private var notasParaTeste:[String] = ["Hoje eu acordei pensando em voce","Pensando em coisas que eu nem sei por que","Ta duro desfarçar, me engana que eu ja sei", "Eu me pergunto se ai também", "Foi forteee.... sorte...."]
     
     private var datasParaTeste:[String] = ["11 de Março de 2024"]
+    
+    private var notasCollectionDataSource: NotasCollectionDataSource
+    private var notasCollectionDelegate = NotasCollectionDelegate()
     
     
     //Componentes
@@ -45,9 +46,21 @@ class NotasViewController: UIViewController {
         return titleLabel
     }()
     
+    init() {
+        notasCollectionDataSource = NotasCollectionDataSource(notasParaTeste: notasParaTeste)
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //Ciclo de vida da NotasViewController
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         setUpUI()
         
     }
@@ -60,12 +73,12 @@ class NotasViewController: UIViewController {
         addNotas()
         
         
-        self.notasView.dataSource = self
-        self.notasView.delegate = self
+        self.notasView.dataSource = notasCollectionDataSource
+        self.notasView.delegate = notasCollectionDelegate
         
         
         //Pegar itens do CoreData
-//        fetchNotas()
+        //        fetchNotas()
     }
     
     
@@ -78,13 +91,13 @@ class NotasViewController: UIViewController {
         
         navigationController?.navigationBar.barTintColor = .background
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: fonts.tsukimiBold.rawValue, size: 17)!]
-//        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
+        //        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
     }
     
     func setPlusButton(){
         //Aqui eu escolho a imagem, o estilo, e qual ação vai realizar
         navigationItem.rightBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(navigate))
-       
+        
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
@@ -97,7 +110,7 @@ class NotasViewController: UIViewController {
     }
     
     func addNotas(){
-
+        
         
         self.view.addSubview(notasView)
         notasView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,7 +121,7 @@ class NotasViewController: UIViewController {
             notasView.topAnchor.constraint(equalTo: self.view.topAnchor),
             notasView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
-
+        
     }
     
     @objc func navigate(){
@@ -123,59 +136,15 @@ class NotasViewController: UIViewController {
     }
     
     //Funções do CoreData
-//    func fetchNotas(){
-//        do{
-//            self.notas = try context.fetch(Nota.fetchRequest())
-//
-//        } catch{
-//            print("Não foi possivel pegar os items do CoreData, error: \(error)")
-//        }
-//    }
-
-}
-
-//TODO: Trocar essas extensions por classes separadas de DataSource e Delegate, nao sei bem ainda como faz
-
-extension NotasViewController: UICollectionViewDelegate, UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //TODO: Pegar a quantidade de notas do CoreData
-        
-        return self.notasParaTeste.count
-    }
+    //    func fetchNotas(){
+    //        do{
+    //            self.notas = try context.fetch(Nota.fetchRequest())
+    //
+    //        } catch{
+    //            print("Não foi possivel pegar os items do CoreData, error: \(error)")
+    //        }
+    //    }
     
-    //Aqui eu crio minhas celulas
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotaCollectionViewCell.identifier, for: indexPath) as? NotaCollectionViewCell else {
-            fatalError("Falhou em tentar pegar minha celula customizada na NotasViewController")
-        }
-        
-        
-        //TODO: Pegar notas e datas do CoreData
-        let noteText = self.notasParaTeste[indexPath.row]
-        let noteDate = self.datasParaTeste[0]
-        
-        cell.configure(noteText, noteDate)
-        
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        navigateCollection(titulo: collectionView.cellForItem(at: indexPath)., nota: collectionView.cellForItem(at: indexPath).getNota())
-    }
-    
-    
-}
-
-extension NotasViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 121)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 40
-    }
-
 }
 
 @available(iOS 17.0, *)
