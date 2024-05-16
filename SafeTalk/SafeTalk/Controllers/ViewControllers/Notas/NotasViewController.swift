@@ -9,20 +9,21 @@ import UIKit
 
 class NotasViewController: UIViewController {
     
-    //Coisas do CoreData
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        var notas: [Nota]?
+    //MARK: Coisas do CoreData
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    //Variáveis
+    var notas: [Nota]?
+    
+    //MARK: Variáveis
     private var notasParaTeste:[String] = ["Hoje eu acordei pensando em voce","Pensando em coisas que eu nem sei por que","Ta duro desfarçar, me engana que eu ja sei", "Eu me pergunto se ai também", "Foi forteee.... sorte...."]
     
     private var datasParaTeste:[String] = ["11 de Março de 2024"]
     
-    private var notasCollectionDataSource: NotasCollectionDataSource
-    private var notasCollectionDelegate = NotasCollectionDelegate()
+    private var notasCollectionDataSource: NotasCollectionDataSource?
+    private var notasCollectionDelegate: NotasCollectionDelegate?
     
     
-    //Componentes
+    //MARK: Componentes
     private let notasView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -46,39 +47,45 @@ class NotasViewController: UIViewController {
         return titleLabel
     }()
     
-    init() {
-        notasCollectionDataSource = NotasCollectionDataSource(notasParaTeste: notasParaTeste)
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //Ciclo de vida da NotasViewController
+    //MARK: Ciclo de vida da NotasViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         setUpUI()
         
+        //Atualizar os dados do meu vetor de notas
+        self.fetchNotas()
     }
     
-    //Funções
+    override func viewWillAppear(_ animated: Bool) {
+        updateDataSourceAndDelegate()
+        
+        //Atualizar os dados do meu vetor de notas
+        self.fetchNotas()
+    }
+    
+    //MARK: Funções de componentes
     func setUpUI(){
+        createDataSourceAndDelegate()
         setNavigationTitle()
         setPlusButton()
         customizeBackButton()
         addNotas()
         
-        
         self.notasView.dataSource = notasCollectionDataSource
         self.notasView.delegate = notasCollectionDelegate
+    }
+    
+    func createDataSourceAndDelegate(){
+        // Preparar meu delagate e meu datasource
+        notasCollectionDataSource = NotasCollectionDataSource(notasParaTeste: notasParaTeste)
+        notasCollectionDelegate = NotasCollectionDelegate(navigationController: navigationController, notasParaTeste: notasParaTeste)
+    }
+    
+    func updateDataSourceAndDelegate(){
+        notasCollectionDelegate?.notasParaTeste = notasParaTeste
+        notasCollectionDelegate?.navigationController = navigationController
         
-        
-        //Pegar itens do CoreData
-        //        fetchNotas()
+        notasCollectionDataSource?.notasParaTeste = notasParaTeste
     }
     
     
@@ -91,7 +98,6 @@ class NotasViewController: UIViewController {
         
         navigationController?.navigationBar.barTintColor = .background
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: fonts.tsukimiBold.rawValue, size: 17)!]
-        //        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .bold)]
     }
     
     func setPlusButton(){
@@ -135,15 +141,37 @@ class NotasViewController: UIViewController {
         navigationController?.pushViewController(container, animated: true)
     }
     
-    //Funções do CoreData
-    //    func fetchNotas(){
-    //        do{
-    //            self.notas = try context.fetch(Nota.fetchRequest())
-    //
-    //        } catch{
-    //            print("Não foi possivel pegar os items do CoreData, error: \(error)")
-    //        }
-    //    }
+    //MARK: Funções do CoreData
+    func fetchNotas(){
+        do{
+            self.notas = try context.fetch(Nota.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.notasView.reloadData()
+            }
+            
+        } catch{
+            print("Não foi possivel pegar os items do CoreData, error: \(error)")
+        }
+    }
+    
+    func addNota(titulo: String, texto: String){
+        
+        //Criar uma nota nova
+        let nota = Nota(context: self.context)
+        nota.titulo = titulo
+        nota.texto = texto
+        
+        //Salvar no dispositivo
+        do {
+            try self.context.save()
+        }
+        catch {
+            print("Error ao salvar nova nota")
+        }
+        
+        
+    }
     
 }
 

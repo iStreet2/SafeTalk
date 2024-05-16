@@ -16,7 +16,7 @@ class VisualizarNotaViewController: UIViewController {
         return image
     }()
     
-    let tituloLabel: UILabel = {
+    var tituloLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -27,7 +27,7 @@ class VisualizarNotaViewController: UIViewController {
         return label
     }()
     
-    let notaLabel: UILabel = {
+    var notaLabel: UILabel = {
         
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -70,7 +70,7 @@ class VisualizarNotaViewController: UIViewController {
         NSLayoutConstraint.activate([
             tituloLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             tituloLabel.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            tituloLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20)
+            tituloLabel.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 80)
         ])
     }
     

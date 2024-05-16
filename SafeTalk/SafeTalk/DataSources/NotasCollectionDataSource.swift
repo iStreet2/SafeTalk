@@ -10,8 +10,11 @@ import UIKit
 
 class NotasCollectionDataSource: NSObject, UICollectionViewDataSource{
     
-    private var notasParaTeste:[String]
-    private var datasParaTeste = ["11 de Maio de 2024"]
+    var notasParaTeste:[String]
+    var datasParaTeste = ["11 de Maio de 2024"]
+    
+    //Vamos trocar aqui os notas para testes para as notas reais do CoreData:
+    
     
     init(notasParaTeste: [String]) {
         self.notasParaTeste = notasParaTeste

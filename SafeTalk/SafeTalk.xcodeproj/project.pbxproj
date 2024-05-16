@@ -29,6 +29,7 @@
 		3BE877A52BF545AA000ABC38 /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */; };
 		3BE877A72BF554F1000ABC38 /* NotasCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A62BF554F1000ABC38 /* NotasCollectionDataSource.swift */; };
 		3BE877AB2BF557EA000ABC38 /* NotasCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877AA2BF557EA000ABC38 /* NotasCollectionDelegate.swift */; };
+		3BE877AF2BF69015000ABC38 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877AE2BF69015000ABC38 /* DataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 		3BE877A62BF554F1000ABC38 /* NotasCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionDataSource.swift; sourceTree = "<group>"; };
 		3BE877AA2BF557EA000ABC38 /* NotasCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionDelegate.swift; sourceTree = "<group>"; };
+		3BE877AE2BF69015000ABC38 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,7 @@
 				3B2208882BF3C08E00CF6865 /* Fonts */,
 				3BE877A92BF5579E000ABC38 /* Delegates */,
 				3BE877A82BF554FD000ABC38 /* DataSources */,
-				3B2208872BF3C04100CF6865 /* ViewControllers */,
+				3BE877AC2BF68FFD000ABC38 /* Controllers */,
 				3B2208762BF2ABEF00CF6865 /* Assets.xcassets */,
 				3B2208782BF2ABEF00CF6865 /* LaunchScreen.storyboard */,
 				3B22087B2BF2ABEF00CF6865 /* Info.plist */,
@@ -195,6 +197,23 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		3BE877AC2BF68FFD000ABC38 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3BE877AD2BF6900A000ABC38 /* DataController */,
+				3B2208872BF3C04100CF6865 /* ViewControllers */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3BE877AD2BF6900A000ABC38 /* DataController */ = {
+			isa = PBXGroup;
+			children = (
+				3BE877AE2BF69015000ABC38 /* DataController.swift */,
+			);
+			path = DataController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -281,6 +300,7 @@
 				3B978A172BF3E360002E42B6 /* CriarNotaViewController.swift in Sources */,
 				3B2208862BF2AE6E00CF6865 /* ExpectativasViewController.swift in Sources */,
 				3B2208982BF3D98900CF6865 /* EnumFonts.swift in Sources */,
+				3BE877AF2BF69015000ABC38 /* DataController.swift in Sources */,
 				3B978A1A2BF3F057002E42B6 /* Model.xcdatamodeld in Sources */,
 				3B22086E2BF2ABED00CF6865 /* AppDelegate.swift in Sources */,
 				3B2208702BF2ABED00CF6865 /* SceneDelegate.swift in Sources */,
