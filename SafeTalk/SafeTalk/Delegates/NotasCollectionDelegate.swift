@@ -11,7 +11,6 @@ import UIKit
 class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var navigationController: UINavigationController?
-//    var notasParaTeste: [String]
     
     var notas: [Nota]?
 
@@ -21,15 +20,15 @@ class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionV
         self.notas = notas
     }
     
-    func navigate(titulo: String, nota: String){
+    func navigate(nota: Nota){
         let container = VisualizarNotaViewController()
-        container.notaLabel.text = nota
-        container.tituloLabel.text = titulo
+        container.nota = nota
         navigationController?.pushViewController(container, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigate(titulo: notas?[indexPath.row].titulo ?? "error", nota: notas?[indexPath.row].texto ?? "error")
+        guard let nota = notas?[indexPath.row] else {return}
+        navigate(nota: nota)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

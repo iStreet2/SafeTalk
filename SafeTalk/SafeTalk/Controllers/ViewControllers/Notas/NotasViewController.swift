@@ -140,7 +140,7 @@ class NotasViewController: UIViewController {
     @objc func navigateCollection(titulo: String, nota: String){
         let container = VisualizarNotaViewController()
         container.tituloLabel.text = titulo
-        container.notaLabel.text = nota
+        container.textoLabel.text = nota
         navigationController?.pushViewController(container, animated: true)
     }
     
