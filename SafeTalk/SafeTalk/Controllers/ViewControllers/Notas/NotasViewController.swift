@@ -8,7 +8,7 @@
 import UIKit
 
 class NotasViewController: UIViewController {
-    
+        
     //MARK: Coisas do CoreData
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -50,17 +50,17 @@ class NotasViewController: UIViewController {
     //MARK: Ciclo de vida da NotasViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpUI()
         
         //Atualizar os dados do meu vetor de notas
         self.fetchNotas()
+        
+        setUpUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        updateDataSourceAndDelegate()
-        
         //Atualizar os dados do meu vetor de notas
         self.fetchNotas()
+        updateDataSourceAndDelegate()        
     }
     
     //MARK: Funções de componentes
@@ -77,15 +77,17 @@ class NotasViewController: UIViewController {
     
     func createDataSourceAndDelegate(){
         // Preparar meu delagate e meu datasource
-        notasCollectionDataSource = NotasCollectionDataSource(notasParaTeste: notasParaTeste)
-        notasCollectionDelegate = NotasCollectionDelegate(navigationController: navigationController, notasParaTeste: notasParaTeste)
+        notasCollectionDataSource = NotasCollectionDataSource(notas: notas)
+        notasCollectionDelegate = NotasCollectionDelegate(navigationController: navigationController, notas: notas)
     }
     
     func updateDataSourceAndDelegate(){
-        notasCollectionDelegate?.notasParaTeste = notasParaTeste
+        notasCollectionDelegate?.notas = notas
         notasCollectionDelegate?.navigationController = navigationController
         
-        notasCollectionDataSource?.notasParaTeste = notasParaTeste
+        notasCollectionDataSource?.notas = notas
+        notasView.reloadData()
+        
     }
     
     

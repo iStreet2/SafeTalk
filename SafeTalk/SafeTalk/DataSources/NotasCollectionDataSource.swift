@@ -10,20 +10,19 @@ import UIKit
 
 class NotasCollectionDataSource: NSObject, UICollectionViewDataSource{
     
-    var notasParaTeste:[String]
+//    var notasParaTeste:[String]
     var datasParaTeste = ["11 de Maio de 2024"]
     
     //Vamos trocar aqui os notas para testes para as notas reais do CoreData:
+    var notas: [Nota]?
     
-    
-    init(notasParaTeste: [String]) {
-        self.notasParaTeste = notasParaTeste
+    init(notas: [Nota]?) {
+        self.notas = notas
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //TODO: Pegar a quantidade de notas do CoreData
-        
-        return self.notasParaTeste.count
+        return notas?.count ?? 0
     }
     
     //Aqui eu crio minhas celulas
@@ -35,13 +34,14 @@ class NotasCollectionDataSource: NSObject, UICollectionViewDataSource{
         
         
         //TODO: Pegar notas e datas do CoreData
-        let noteText = self.notasParaTeste[indexPath.row]
+        let noteText = self.notas?[indexPath.row].texto ?? "error"
         let noteDate = self.datasParaTeste[0]
         
         cell.configure(noteText, noteDate)
         
+        
+        
         return cell
     }
-    
     
 }

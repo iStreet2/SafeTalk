@@ -8,26 +8,28 @@
 import Foundation
 import UIKit
 
-class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate {
     
     var navigationController: UINavigationController?
-    var notasParaTeste: [String]
+//    var notasParaTeste: [String]
+    
+    var notas: [Nota]?
 
     
-    init(navigationController: UINavigationController?, notasParaTeste: [String]) {
+    init(navigationController: UINavigationController?, notas: [Nota]?) {
         self.navigationController = navigationController
-        self.notasParaTeste = notasParaTeste
+        self.notas = notas
     }
     
-    func navigate(nota: String){
+    func navigate(titulo: String, nota: String){
         let container = VisualizarNotaViewController()
         container.notaLabel.text = nota
-        container.tituloLabel.text = "Funcionando"
+        container.tituloLabel.text = titulo
         navigationController?.pushViewController(container, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigate(nota: notasParaTeste[indexPath.row])
+        navigate(titulo: notas?[indexPath.row].titulo ?? "error", nota: notas?[indexPath.row].texto ?? "error")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -36,7 +38,6 @@ class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 40
     }
-    
 }
 
 @available(iOS 17, *)
