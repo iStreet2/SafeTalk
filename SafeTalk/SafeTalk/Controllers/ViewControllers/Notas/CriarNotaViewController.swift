@@ -18,7 +18,10 @@ class CriarNotaViewController: UIViewController {
     var nota: Nota?
     
     //Variáveis
-    var uiTextViewDelegate = CriarNotaViewControllerTextViewDelegate()
+    var uiTituloViewDelegate = CriarNotaViewTituloDelegate()
+    var uiTextoViewDelegate = CriarNotaViewTextoDelegate()
+    
+    var alreadySaved = false
     
     
     //Componentes
@@ -40,25 +43,24 @@ class CriarNotaViewController: UIViewController {
         return label
     }()
     
-    lazy var tituloTextField: UITextView = {
+    var tituloTextField: UITextField = {
         
-        let textView = UITextView()
+        let textField = UITextField()
         
-        textView.translatesAutoresizingMaskIntoConstraints = false
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
-        textView.font = UIFont(name: fonts.tsukimiSemiBold.rawValue, size: 34.15)
-        textView.tintColor = .white
-        textView.textColor = .white
-        textView.backgroundColor = .clear
-        textView.textAlignment  = .left
-        textView.text = "Título"
-        textView.layer.opacity = 0.3
+        textField.font = UIFont(name: fonts.tsukimiSemiBold.rawValue, size: 34.15)
+        textField.tintColor = .white
+        textField.textColor = .white
+        textField.backgroundColor = .clear
+        textField.textAlignment  = .left
+        textField.placeholder = "Título"
         
         
-        return textView
+        return textField
     }()
     
-    lazy var textoTextField: UITextView = {
+    var textoTextField: UITextView = {
         let textView = UITextView()
         
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -68,6 +70,7 @@ class CriarNotaViewController: UIViewController {
         textView.textColor = .white
         textView.backgroundColor = .clear
         textView.textAlignment  = .left
+        textView.textColor = .white
         textView.text = "O que você está pensando?"
         textView.layer.opacity = 0.3
         
@@ -82,14 +85,16 @@ class CriarNotaViewController: UIViewController {
         setUpUI()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         guard let titulo = tituloTextField.text else { return }
         guard let texto = textoTextField.text else {return}
         
         //Se o título ou a notas estiver vazio, não salva
-        if titulo != "" && (texto != "O que você está pensando?" || texto != ""){
+        if titulo != "" && (texto != "O que você está pensando?" || texto != "") && !alreadySaved{
             addNota(titulo: titulo, texto: texto)
         }
+        
+        self.alreadySaved = true
     }
     
     //Funções dos componentes
@@ -129,12 +134,12 @@ class CriarNotaViewController: UIViewController {
     func setTituloTextField(){
         self.view.addSubview(tituloTextField)
         
-        self.tituloTextField.delegate = uiTextViewDelegate
-        
+        tituloTextField.delegate = uiTituloViewDelegate
+                
         NSLayoutConstraint.activate([
             tituloTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             tituloTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            tituloTextField.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 100)
+            tituloTextField.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0)
         ])
         tituloTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
@@ -142,7 +147,7 @@ class CriarNotaViewController: UIViewController {
     func setTextoTextField(){
         self.view.addSubview(textoTextField)
         
-        self.textoTextField.delegate = uiTextViewDelegate
+        self.textoTextField.delegate = uiTextoViewDelegate
         
         NSLayoutConstraint.activate([
             textoTextField.leadingAnchor.constraint(equalTo: tituloTextField.leadingAnchor),

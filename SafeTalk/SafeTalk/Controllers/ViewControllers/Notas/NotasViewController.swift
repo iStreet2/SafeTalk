@@ -61,6 +61,7 @@ class NotasViewController: UIViewController {
         //Atualizar os dados do meu vetor de notas
         self.fetchNotas()
         updateDataSourceAndDelegate()        
+        print("chamandoooo")
     }
     
     //MARK: Funções de componentes
@@ -173,6 +174,13 @@ class NotasViewController: UIViewController {
         }
         
         
+    }
+    
+    func reset(sender: UISwipeGestureRecognizer) {
+        let cell = sender.view as! UICollectionViewCell
+        let i = self.notasView.indexPath(for: cell)!.item
+        notas?.remove(at: i) //replace favoritesInstance.favoritesArray with your own array
+        self.notasView.reloadData() // replace favoritesCV with your own collection view.
     }
     
 }

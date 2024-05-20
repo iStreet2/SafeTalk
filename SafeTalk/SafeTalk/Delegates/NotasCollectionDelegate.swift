@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate {
+class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var navigationController: UINavigationController?
 //    var notasParaTeste: [String]
