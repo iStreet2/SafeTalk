@@ -34,24 +34,9 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         
         if isAuthenticated == .authenticating {
-            print("autenticando...")
             initBackground()
             initBlur()
             authenticateTapped()
-            
-            if isAuthenticated == .authenticated {
-                
-            }
-            while isAuthenticated == .unauthenticated{
-                print("Autenticação falhou")
-                
-                let ac = UIAlertController(title: "Falha ao reconhecer senha", message: "Você não conseguir ser verificado; por favor tente novamente.", preferredStyle: .alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(ac, animated: true)
-                isAuthenticated = .authenticating
-                
-            }
-            
         }
     }
     
@@ -143,7 +128,6 @@ class TabBarController: UITabBarController {
                     } else {
                         // error
                         self?.isAuthenticated = .unauthenticated
-                        print("Autenticação falhou")
                         
                         let ac = UIAlertController(title: "Falha ao realizar autenticação", message: "Você não conseguir ser verificado; por favor tente novamente.", preferredStyle: .alert)
                         
