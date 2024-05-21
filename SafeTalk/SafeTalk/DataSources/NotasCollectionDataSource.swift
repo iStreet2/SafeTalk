@@ -32,10 +32,21 @@ class NotasCollectionDataSource: NSObject, UICollectionViewDataSource{
             fatalError("Falhou em tentar pegar minha celula customizada na NotasViewController")
         }
         
+        let date = Date()
+
+        let dataString = date.formatted(
+        
+            Date.FormatStyle()
+                .locale(Locale(identifier: "pt-BR"))
+            
+                .day(.twoDigits)
+                .month(.wide)
+                .year()
+        )
         
         //TODO: Pegar notas e datas do CoreData
         let noteText = self.notas?[indexPath.row].texto ?? "error"
-        let noteDate = self.datasParaTeste[0]
+        let noteDate = dataString
         
         cell.configure(noteText, noteDate)
         

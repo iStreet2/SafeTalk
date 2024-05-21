@@ -54,7 +54,12 @@ class CriarNotaViewController: UIViewController {
         textField.textColor = .white
         textField.backgroundColor = .clear
         textField.textAlignment  = .left
-        textField.placeholder = "Título"
+        textField.layer.opacity = 0.3
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Título",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
+                        ]
+        )
         
         
         return textField

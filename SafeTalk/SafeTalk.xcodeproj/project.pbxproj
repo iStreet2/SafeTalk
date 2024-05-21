@@ -111,12 +111,12 @@
 		3B2208872BF3C04100CF6865 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */,
+				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
 				3B978A3E2BF3F82A002E42B6 /* Componentes */,
 				3B978A132BF3E232002E42B6 /* Notas */,
-				3B978A142BF3E23E002E42B6 /* Expectativas */,
 				3B978A152BF3E245002E42B6 /* Gravacoes */,
-				3B2208812BF2ACEB00CF6865 /* TabBarController.swift */,
-				3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */,
+				3B978A142BF3E23E002E42B6 /* Expectativas */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

@@ -15,8 +15,6 @@ class NotasViewController: UIViewController {
     var notas: [Nota]?
     
     //MARK: Variáveis
-    private var notasParaTeste:[String] = ["Hoje eu acordei pensando em voce","Pensando em coisas que eu nem sei por que","Ta duro desfarçar, me engana que eu ja sei", "Eu me pergunto se ai também", "Foi forteee.... sorte...."]
-    
     private var datasParaTeste:[String] = ["11 de Março de 2024"]
     
     private var notasCollectionDataSource: NotasCollectionDataSource?
@@ -59,9 +57,7 @@ class NotasViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         //Atualizar os dados do meu vetor de notas
-        self.fetchNotas()
         updateDataSourceAndDelegate()        
-        print("chamandoooo")
     }
     
     //MARK: Funções de componentes
@@ -69,6 +65,7 @@ class NotasViewController: UIViewController {
         createDataSourceAndDelegate()
         setNavigationTitle()
         setPlusButton()
+        setEraseAllDataButton()
         customizeBackButton()
         addNotas()
         
@@ -83,12 +80,14 @@ class NotasViewController: UIViewController {
     }
     
     func updateDataSourceAndDelegate(){
+        self.fetchNotas()
+        
         notasCollectionDelegate?.notas = notas
         notasCollectionDelegate?.navigationController = navigationController
         
         notasCollectionDataSource?.notas = notas
-        notasView.reloadData()
         
+        notasView.reloadData()
     }
     
     
@@ -96,7 +95,7 @@ class NotasViewController: UIViewController {
         self.title = "Notas"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: fonts.twinkle.rawValue, size: 34)!]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: fonts.tsukimiBold.rawValue, size: 34)!]
         
         
         navigationController?.navigationBar.barTintColor = .background
@@ -110,6 +109,13 @@ class NotasViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
+    func setEraseAllDataButton(){
+        //Aqui eu escolho a imagem, o estilo, e qual ação vai realizar
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(image: UIImage(systemName: "trash.fill"), style: .plain, target: self, action: #selector(deleteAllData))
+        
+        navigationItem.leftBarButtonItem?.tintColor = .white
+    }
+    
     func customizeBackButton(){
         let backImage = UIImage(systemName: "chevron.left")
         self.navigationController?.navigationBar.backIndicatorImage = backImage
@@ -119,8 +125,6 @@ class NotasViewController: UIViewController {
     }
     
     func addNotas(){
-        
-        
         self.view.addSubview(notasView)
         notasView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -133,6 +137,8 @@ class NotasViewController: UIViewController {
         
     }
     
+    //MARK: Funções de Lógica
+    
     @objc func navigate(){
         navigationController?.pushViewController(CriarNotaViewController(), animated: true)
     }
@@ -143,9 +149,12 @@ class NotasViewController: UIViewController {
         container.textoLabel.text = nota
         navigationController?.pushViewController(container, animated: true)
     }
-    
+
     //MARK: Funções do CoreData
     func fetchNotas(){
+        
+        self.notas?.removeAll()
+        
         do{
             self.notas = try context.fetch(Nota.fetchRequest())
             
@@ -173,7 +182,44 @@ class NotasViewController: UIViewController {
             print("Error ao salvar nova nota")
         }
         
+    }
+    
+    @objc func deleteAllData(){
         
+        if self.notas == nil || self.notas?.count == 0 {
+            let emptyAlert = UIAlertController(title: "Sem notas", message: "Não há notas para deletar!", preferredStyle: .alert)
+            emptyAlert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(emptyAlert, animated: true, completion: nil)
+        }
+        
+        else{
+            let alert = UIAlertController(title: "Deletar", message: "Quer mesmo deletar TODAS suas notas?", preferredStyle: .alert)
+            
+            guard let notas = notas else {return}
+            
+            
+            let cancel = UIAlertAction(title: "Cancelar", style: .cancel)
+            let deleteData = UIAlertAction(title: "Deletar", style: .destructive) { action in
+                
+                for nota in notas {
+                    self.context.delete(nota)
+                }
+                
+                do {
+                    try self.context.save()
+                } catch{
+                    print("Erro ao deletar o dado")
+                }
+                self.navigationController?.popViewController(animated: true)
+                self.updateDataSourceAndDelegate()
+            }
+            
+            alert.addAction(deleteData)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
+            
+            
+        }
     }
     
     func reset(sender: UISwipeGestureRecognizer) {

@@ -33,10 +33,18 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         if isAuthenticated == .authenticating {
             initBackground()
             initBlur()
-            authenticateTapped()
+            
+            //MARK: Para DEBUG TIRAR DEPOIIISS
+//            authenticateTapped()
+            isAuthenticated = .authenticated
+            
+            if isAuthenticated == .authenticated {
+                setElements()
+            }
         }
     }
     
@@ -124,7 +132,6 @@ class TabBarController: UITabBarController {
                     if success {
                         //Se o usuário for autenticado:
                         self?.isAuthenticated = .authenticated
-                        self?.setElements()
                     } else {
                         // error
                         self?.isAuthenticated = .unauthenticated
