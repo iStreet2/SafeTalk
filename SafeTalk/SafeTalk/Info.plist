@@ -11,6 +11,8 @@
 		<string>TsukimiRounded-SemiBold.ttf</string>
 		<string>TwinkleStar-Regular.ttf</string>
 	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>uso pra sua segurança</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsTabbedSceneCollection</key>

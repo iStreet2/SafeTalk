@@ -5,22 +5,60 @@
 //  Created by Gabriel Vicentin Negro on 13/05/24.
 //
 
+import LocalAuthentication
 import UIKit
 
 class TabBarController: UITabBarController {
     
-    //inicializo minha variável de imagem do fundo
+    //Variáveis
+    var isAuthenticated: authenticationState = .authenticating
+    
+    //Componentes
     let image: UIImageView = {
         var image = UIImageView(image: UIImage(named: "BackgroundShapes"))
         image.translatesAutoresizingMaskIntoConstraints = false
+        
         return image
     }()
-
+    
+    let blurEffectView: UIVisualEffectView = {
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        let blur = UIVisualEffectView(effect: blurEffect)
+        
+        return blur
+        
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initBackground()
+        
+        if isAuthenticated == .authenticating {
+            print("autenticando...")
+            initBackground()
+            initBlur()
+            authenticateTapped()
+            
+            if isAuthenticated == .authenticated {
+                
+            }
+            while isAuthenticated == .unauthenticated{
+                print("Autenticação falhou")
+                
+                let ac = UIAlertController(title: "Falha ao reconhecer senha", message: "Você não conseguir ser verificado; por favor tente novamente.", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(ac, animated: true)
+                isAuthenticated = .authenticating
+                
+            }
+            
+        }
+    }
+    
+    func setElements(){
         initTabBar()
         configTabBar()
+        removeBlur()
     }
     
     func initTabBar(){
@@ -47,6 +85,19 @@ class TabBarController: UITabBarController {
         
     }
     
+    func initBlur(){
+        blurEffectView.frame = view.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        
+        view.addSubview(blurEffectView)
+    }
+    
+    func removeBlur(){
+        blurEffectView.removeFromSuperview()
+    }
+
+    
     func configTabBar(){
         //Inicialização da primeira View no primeiro item da TabBar
         let notasViewController = UINavigationController(rootViewController: NotasViewController())
@@ -69,10 +120,59 @@ class TabBarController: UITabBarController {
         
         self.setViewControllers([notasViewController,gravacoesViewController,expectativasViewController], animated: true)
     }
+    
+    func authenticateTapped(){
+        let context = LAContext()
+        var error: NSError?
+        
+//        context.localizedFallbackTitle = ""
+        
+        
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            let reason = "Se identifique por favor."
+
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
+                [weak self] success, authenticationError in
+
+                DispatchQueue.main.async {
+                    if success {
+                        //Se o usuário for autenticado:
+                        self?.isAuthenticated = .authenticated
+                        self?.setElements()
+                    } else {
+                        // error
+                        self?.isAuthenticated = .unauthenticated
+                        print("Autenticação falhou")
+                        
+                        let ac = UIAlertController(title: "Falha ao realizar autenticação", message: "Você não conseguir ser verificado; por favor tente novamente.", preferredStyle: .alert)
+                        
+                        let action = UIAlertAction(title: "Tentar Novamente", style: .default) { action in
+                            self?.authenticateTapped()
+                        }
+                        ac.addAction(action)
+                        self?.present(ac, animated: true)
+                        
+                    }
+                }
+            }
+        } else {
+            // no biometry
+            self.isAuthenticated = .authenticated
+        }
+    }
 
 }
 
 @available(iOS 17.0, *)
 #Preview{
     return TabBarController()
+}
+
+enum authenticationState {
+    
+    case authenticated
+    case authenticating
+    case unauthenticated
+    
 }
