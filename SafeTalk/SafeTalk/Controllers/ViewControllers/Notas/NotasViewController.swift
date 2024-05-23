@@ -68,15 +68,15 @@ class NotasViewController: UIViewController {
         setEraseAllDataButton()
         customizeBackButton()
         addNotas()
-        
-        self.notasView.dataSource = notasCollectionDataSource
-        self.notasView.delegate = notasCollectionDelegate
     }
     
     func createDataSourceAndDelegate(){
         // Preparar meu delagate e meu datasource
         notasCollectionDataSource = NotasCollectionDataSource(notas: notas)
         notasCollectionDelegate = NotasCollectionDelegate(navigationController: navigationController, notas: notas)
+        
+        self.notasView.dataSource = notasCollectionDataSource
+        self.notasView.delegate = notasCollectionDelegate
     }
     
     func updateDataSourceAndDelegate(){
@@ -167,23 +167,6 @@ class NotasViewController: UIViewController {
         }
     }
     
-    func addNota(titulo: String, texto: String){
-        
-        //Criar uma nota nova
-        let nota = Nota(context: self.context)
-        nota.titulo = titulo
-        nota.texto = texto
-        
-        //Salvar no dispositivo
-        do {
-            try self.context.save()
-        }
-        catch {
-            print("Error ao salvar nova nota")
-        }
-        
-    }
-    
     @objc func deleteAllData(){
         
         if self.notas == nil || self.notas?.count == 0 {
@@ -222,12 +205,7 @@ class NotasViewController: UIViewController {
         }
     }
     
-    func reset(sender: UISwipeGestureRecognizer) {
-        let cell = sender.view as! UICollectionViewCell
-        let i = self.notasView.indexPath(for: cell)!.item
-        notas?.remove(at: i) //replace favoritesInstance.favoritesArray with your own array
-        self.notasView.reloadData() // replace favoritesCV with your own collection view.
-    }
+
     
 }
 

@@ -39,18 +39,18 @@ class TabBarController: UITabBarController {
             initBlur()
             
             //MARK: Para DEBUG TIRAR DEPOIIISS
-//            isAuthenticated = .authenticated
-//            setElements()
+            isAuthenticated = .authenticated
+            setElements()
             
-            authenticateTapped() { result in
-                
-                if result == true{
-                    if self.isAuthenticated == .authenticated {
-                        self.setElements()
-                    }
-                }
-                
-            }
+//            authenticateTapped() { result in
+//                
+//                if result == true{
+//                    if self.isAuthenticated == .authenticated {
+//                        self.setElements()
+//                    }
+//                }
+//                
+//            }
         }
     }
     
@@ -62,11 +62,16 @@ class TabBarController: UITabBarController {
     
     func initTabBar(){
         //Vou inicializar minha TabBar com as cores dos items e dela
-        self.tabBar.barTintColor = .tabBarItemOrange
+        
+        
         self.tabBar.tintColor = .tabBarItemOrange
-        self.tabBar.unselectedItemTintColor = .tabBarItemOrange
+        self.tabBar.barTintColor = .white
+       
+        self.tabBar.isTranslucent = false
+        
         self.tabBar.backgroundColor = .white
-
+        
+        self.tabBar.unselectedItemTintColor = .tabBarItemOrange
     }
     
     func initBackground(){

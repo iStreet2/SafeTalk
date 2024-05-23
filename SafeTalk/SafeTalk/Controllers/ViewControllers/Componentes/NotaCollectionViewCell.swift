@@ -90,14 +90,6 @@ class NotaCollectionViewCell: UICollectionViewCell {
         
     }()
     
-    public func getNota() -> String{
-        return noteLabel.text ?? "error"
-    }
-    
-    public func getData() -> String{
-        return self.dateLabel.text ?? "error"
-    }
-    
     public func configure(_ note: String,_ date: String){
         self.noteLabel.text = note
         self.dateLabel.text = date
