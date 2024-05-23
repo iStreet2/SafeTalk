@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "formasDoFundo.svg",
+      "filename" : "BackgroundShapes.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "formasDoFundo 1.svg",
+      "filename" : "BackgroundShapes 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "formasDoFundo 2.svg",
+      "filename" : "BackgroundShapes 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }

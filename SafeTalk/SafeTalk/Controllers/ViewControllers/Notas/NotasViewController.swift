@@ -20,6 +20,8 @@ class NotasViewController: UIViewController {
         return image
     }()
     
+    
+    
     let blurEffectView: UIVisualEffectView = {
         
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
@@ -141,18 +143,33 @@ class NotasViewController: UIViewController {
     }
     
     func initBackground(){
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        UIImage(named: "BackgroundShapes.png")?.draw(in: self.view.bounds)
+
+        if let image = UIGraphicsGetImageFromCurrentImageContext(){
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+        }else{
+            UIGraphicsEndImageContext()
+            debugPrint("Image not available")
+         }
+        
         //Adiciono minha imagem ao fundo da tela e aplico os constraints
-        self.view.addSubview(image)
-        self.view.backgroundColor = .background
+//        self.view.backgroundColor = .background
+//        self.view.addSubview(image)
+        
         //Aplicar as constraints
-        NSLayoutConstraint.activate([
-            image.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            image.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            image.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            image.topAnchor.constraint(equalTo: self.view.topAnchor)
-        ])
-        //Mandar uma layer abaixo
-        image.layer.zPosition = -1
+//        NSLayoutConstraint.activate([
+//            image.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+//            image.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+//            image.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+//            image.topAnchor.constraint(equalTo: self.view.topAnchor)
+//            image.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+//            image.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+//        ])
+//        //Mandar uma layer abaixo
+//        image.layer.zPosition = -1
         
     }
     
