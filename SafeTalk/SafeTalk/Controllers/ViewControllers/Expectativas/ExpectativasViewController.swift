@@ -31,5 +31,5 @@ class ExpectativasViewController: UIViewController {
 
 @available(iOS 17.0, *)
 #Preview{
-    return ExpectativasViewController()
+    return TabBarController()
 }

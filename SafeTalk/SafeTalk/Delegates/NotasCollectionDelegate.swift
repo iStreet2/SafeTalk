@@ -21,13 +21,15 @@ class NotasCollectionDelegate: NSObject, UICollectionViewDelegate, UICollectionV
     }
     
     func navigate(nota: Nota){
-        let container = VisualizarNotaViewController()
-        container.nota = nota
-        navigationController?.pushViewController(container, animated: true)
+        let view = VisualizarNotaViewController()
+        view.nota = nota
+        navigationController?.pushViewController(view, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         guard let nota = notas?[indexPath.row] else {return}
+        
         navigate(nota: nota)
     }
     

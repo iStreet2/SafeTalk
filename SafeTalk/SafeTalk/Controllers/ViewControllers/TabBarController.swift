@@ -39,11 +39,17 @@ class TabBarController: UITabBarController {
             initBlur()
             
             //MARK: Para DEBUG TIRAR DEPOIIISS
-//            authenticateTapped()
-            isAuthenticated = .authenticated
+//            isAuthenticated = .authenticated
+//            setElements()
             
-            if isAuthenticated == .authenticated {
-                setElements()
+            authenticateTapped() { result in
+                
+                if result == true{
+                    if self.isAuthenticated == .authenticated {
+                        self.setElements()
+                    }
+                }
+                
             }
         }
     }
@@ -56,8 +62,9 @@ class TabBarController: UITabBarController {
     
     func initTabBar(){
         //Vou inicializar minha TabBar com as cores dos items e dela
-        self.tabBar.barTintColor = .white
+        self.tabBar.barTintColor = .tabBarItemOrange
         self.tabBar.tintColor = .tabBarItemOrange
+        self.tabBar.unselectedItemTintColor = .tabBarItemOrange
         self.tabBar.backgroundColor = .white
 
     }
@@ -114,14 +121,10 @@ class TabBarController: UITabBarController {
         self.setViewControllers([notasViewController,gravacoesViewController,expectativasViewController], animated: true)
     }
     
-    func authenticateTapped(){
+    func authenticateTapped(completion: @escaping (Bool) -> Void){
         let context = LAContext()
         var error: NSError?
-        
-//        context.localizedFallbackTitle = ""
-        
-        
-
+    
         if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
             let reason = "Se identifique por favor."
 
@@ -132,6 +135,7 @@ class TabBarController: UITabBarController {
                     if success {
                         //Se o usuário for autenticado:
                         self?.isAuthenticated = .authenticated
+                        completion(true)
                     } else {
                         // error
                         self?.isAuthenticated = .unauthenticated
@@ -139,7 +143,13 @@ class TabBarController: UITabBarController {
                         let ac = UIAlertController(title: "Falha ao realizar autenticação", message: "Você não conseguir ser verificado; por favor tente novamente.", preferredStyle: .alert)
                         
                         let action = UIAlertAction(title: "Tentar Novamente", style: .default) { action in
-                            self?.authenticateTapped()
+                            self?.authenticateTapped() { success in
+                                if success{
+                                    self?.isAuthenticated = .authenticated
+                                    completion(true)
+                                }
+                            }
+                            
                         }
                         ac.addAction(action)
                         self?.present(ac, animated: true)
@@ -151,6 +161,7 @@ class TabBarController: UITabBarController {
             // no biometry
             self.isAuthenticated = .authenticated
         }
+        completion(false)
     }
 
 }

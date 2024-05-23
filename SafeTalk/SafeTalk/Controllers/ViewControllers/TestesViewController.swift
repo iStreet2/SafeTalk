@@ -24,16 +24,16 @@ class TestesViewController: UIViewController {
     
     private let capsuleBodyBackground: UIView = {
        
-        let button = UIView()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         
-        button.backgroundColor = .cardBackPurple
-        button.tintColor = .tintColor
-        button.layer.cornerRadius = 49
+        view.backgroundColor = .cardBackPurple
+        view.tintColor = .tintColor
+        view.layer.cornerRadius = 49
         
         
-        return button
+        return view
         
     }()
     

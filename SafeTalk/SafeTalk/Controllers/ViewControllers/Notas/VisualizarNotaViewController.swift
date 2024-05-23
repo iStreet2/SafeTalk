@@ -61,6 +61,7 @@ class VisualizarNotaViewController: UIViewController {
         setTitle()
         setNote()
         setDeleteButton()
+        self.title = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -152,6 +153,8 @@ class VisualizarNotaViewController: UIViewController {
         guard let notaADeletar = nota else {return}
         
         let deleteData = UIAlertAction(title: "Deletar", style: .destructive) { action in
+            
+            
             self.context.delete(notaADeletar)
             
             do {
@@ -160,6 +163,9 @@ class VisualizarNotaViewController: UIViewController {
                 print("Erro ao deletar o dado")
             }
             self.navigationController?.popViewController(animated: true)
+            
+            
+            
         }
         
         let cancel = UIAlertAction(title: "Cancelar", style: .cancel)

@@ -26,6 +26,7 @@
 		3B978A1A2BF3F057002E42B6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A182BF3F057002E42B6 /* Model.xcdatamodeld */; };
 		3B978A442BF40C08002E42B6 /* NotaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A432BF40C08002E42B6 /* NotaCollectionViewCell.swift */; };
 		3B9DE7CA2BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7C92BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift */; };
+		3B9DE7CE2BFD319000742929 /* GravarAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7CD2BFD319000742929 /* GravarAudioViewController.swift */; };
 		3BE3C93E2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3C93D2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift */; };
 		3BE877A32BF51DDE000ABC38 /* TestesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */; };
 		3BE877A52BF545AA000ABC38 /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */; };
@@ -56,6 +57,7 @@
 		3B978A192BF3F057002E42B6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3B978A432BF40C08002E42B6 /* NotaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B9DE7C92BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarNotaViewTituloDelegate.swift; sourceTree = "<group>"; };
+		3B9DE7CD2BFD319000742929 /* GravarAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravarAudioViewController.swift; sourceTree = "<group>"; };
 		3BE3C93D2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriatNotaViewTextoDelegate.swift; sourceTree = "<group>"; };
 		3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestesViewController.swift; sourceTree = "<group>"; };
 		3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				3B2208832BF2AE5300CF6865 /* GravacoesViewController.swift */,
+				3B9DE7CD2BFD319000742929 /* GravarAudioViewController.swift */,
 			);
 			path = Gravacoes;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				3BE3C93E2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift in Sources */,
 				3B9DE7CA2BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift in Sources */,
 				3B2208702BF2ABED00CF6865 /* SceneDelegate.swift in Sources */,
+				3B9DE7CE2BFD319000742929 /* GravarAudioViewController.swift in Sources */,
 				3B2208842BF2AE5300CF6865 /* GravacoesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

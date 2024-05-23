@@ -12,7 +12,9 @@
 		<string>TwinkleStar-Regular.ttf</string>
 	</array>
 	<key>NSFaceIDUsageDescription</key>
-	<string>uso pra sua segurança</string>
+	<string>Utilizado para sua segurança!</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Gravar sua voz para desabafos!</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsTabbedSceneCollection</key>
