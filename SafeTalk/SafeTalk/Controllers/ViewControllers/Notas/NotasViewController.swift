@@ -6,8 +6,29 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class NotasViewController: UIViewController {
+    
+    //MARK: Coisas para mandar pra AppStore, tirar depois
+    var isAuthenticated: authenticationState = .authenticating
+    
+    let image: UIImageView = {
+        var image = UIImageView(image: UIImage(named: "BackgroundShapes"))
+        image.translatesAutoresizingMaskIntoConstraints = false
+        
+        return image
+    }()
+    
+    let blurEffectView: UIVisualEffectView = {
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.regular)
+        let blur = UIVisualEffectView(effect: blurEffect)
+        
+        return blur
+        
+    }()
+    
         
     //MARK: Coisas do CoreData
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -48,11 +69,7 @@ class NotasViewController: UIViewController {
     //MARK: Ciclo de vida da NotasViewController
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Atualizar os dados do meu vetor de notas
-        self.fetchNotas()
-        
-        setUpUI()
+        faceID()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,8 +77,100 @@ class NotasViewController: UIViewController {
         updateDataSourceAndDelegate()        
     }
     
+    //MARK: Funçoes para mandar para a AppStore, colocar o faceID aqui, background, blur, coisas que estavam na TabBarViewController
+    func faceID(){
+        if isAuthenticated == .authenticating {
+            initBackground()
+            initBlur()
+            
+            authenticateTapped() { result in
+
+                if result == true{
+                    if self.isAuthenticated == .authenticated {
+                        self.fetchNotas()
+                        self.setElements()
+                        self.removeBlur()
+                    }
+                }
+
+            }
+        }
+    }
+    
+    func authenticateTapped(completion: @escaping (Bool) -> Void){
+        let context = LAContext()
+        var error: NSError?
+    
+        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+            let reason = "Se identifique por favor."
+
+            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) {
+                [weak self] success, authenticationError in
+
+                DispatchQueue.main.async {
+                    if success {
+                        //Se o usuário for autenticado:
+                        self?.isAuthenticated = .authenticated
+                        completion(true)
+                    } else {
+                        // error
+                        self?.isAuthenticated = .unauthenticated
+                        
+                        let ac = UIAlertController(title: "Falha ao realizar autenticação", message: "Você não conseguir ser verificado; por favor tente novamente.", preferredStyle: .alert)
+                        
+                        let action = UIAlertAction(title: "Tentar Novamente", style: .default) { action in
+                            self?.authenticateTapped() { success in
+                                if success{
+                                    self?.isAuthenticated = .authenticated
+                                    completion(true)
+                                }
+                            }
+                            
+                        }
+                        ac.addAction(action)
+                        self?.present(ac, animated: true)
+                        
+                    }
+                }
+            }
+        } else {
+            // no biometry
+            self.isAuthenticated = .authenticated
+        }
+        completion(false)
+    }
+    
+    func initBackground(){
+        //Adiciono minha imagem ao fundo da tela e aplico os constraints
+        self.view.addSubview(image)
+        self.view.backgroundColor = .background
+        //Aplicar as constraints
+        NSLayoutConstraint.activate([
+            image.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            image.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            image.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            image.topAnchor.constraint(equalTo: self.view.topAnchor)
+        ])
+        //Mandar uma layer abaixo
+        image.layer.zPosition = -1
+        
+    }
+    
+    func initBlur(){
+        blurEffectView.frame = view.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        
+        view.addSubview(blurEffectView)
+    }
+    
+    func removeBlur(){
+        blurEffectView.removeFromSuperview()
+    }
+
+    
     //MARK: Funções de componentes
-    func setUpUI(){
+    func setElements(){
         createDataSourceAndDelegate()
         setNavigationTitle()
         setPlusButton()

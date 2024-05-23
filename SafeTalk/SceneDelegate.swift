@@ -20,9 +20,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //Fazer setup inicial para inicial o código em ViewCode, basicamente chamar nossa primeira view para o app
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        //MARK: TabView
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.windowScene = windowScene
+//        window?.rootViewController = TabBarController()
+//        window?.makeKeyAndVisible()
+        
+        //MARK: Mandar para a appstore com apenas as notas
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = TabBarController()
+        window?.rootViewController = UINavigationController(rootViewController: NotasViewController())
         window?.makeKeyAndVisible()
     }
 
