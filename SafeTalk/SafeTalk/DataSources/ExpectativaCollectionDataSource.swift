@@ -42,8 +42,9 @@ class ExpectativaCollectionDataSource: NSObject, UICollectionViewDataSource {
         let exTitulo = self.expectativas?[indexPath.row].titulo ?? "error"
         var exDate = dataString
         
+        //Se o titulo for algum desses
         if exTitulo == "O que você espera de seu(sua) parceiro(a) quando diz que ama ele(a)?" || exTitulo == "O que você espera de seu(sua) parceiro(a) quando vocês saem para ir em um rolê com amigos?" || exTitulo == "O que você espera de seu(sua) parceiro(a) quando um de vocês está passando por dificuldade financeira?" || exTitulo == "O que você espera de seu(sua) parceiro(a) quando você diz que está triste?" {
-            
+            //Ao construir a celula, a data vai ser "Sugestão"
             exDate = "Sugestão"
         }
     

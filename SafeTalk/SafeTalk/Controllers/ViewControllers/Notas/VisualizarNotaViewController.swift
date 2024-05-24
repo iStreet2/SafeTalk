@@ -17,7 +17,7 @@ class VisualizarNotaViewController: UIViewController {
     
     var nota: Nota?
     
-    var uiTextoViewDelegate = CriarNotaViewTextoDelegate()
+    var uiTextViewDelegate = TextViewDelegate()
     
     var alreadySaved = false
     
@@ -114,7 +114,7 @@ class VisualizarNotaViewController: UIViewController {
 //       textoLabel.text = "Teste muito maneiro para testar as paradas"
         
         self.view.addSubview(textoLabel)
-        self.textoLabel.delegate = uiTextoViewDelegate
+        self.textoLabel.delegate = uiTextViewDelegate
         
         NSLayoutConstraint.activate([
            textoLabel.leadingAnchor.constraint(equalTo: tituloLabel.leadingAnchor),

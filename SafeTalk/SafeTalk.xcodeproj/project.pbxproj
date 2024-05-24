@@ -25,13 +25,13 @@
 		3B978A172BF3E360002E42B6 /* CriarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */; };
 		3B978A1A2BF3F057002E42B6 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A182BF3F057002E42B6 /* Model.xcdatamodeld */; };
 		3B978A442BF40C08002E42B6 /* NotaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B978A432BF40C08002E42B6 /* NotaCollectionViewCell.swift */; };
-		3B9DE7CA2BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7C92BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift */; };
+		3B9DE7CA2BFBBA5300742929 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7C92BFBBA5300742929 /* TextFieldDelegate.swift */; };
 		3B9DE7CE2BFD319000742929 /* GravarAudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7CD2BFD319000742929 /* GravarAudioViewController.swift */; };
 		3B9DE7D02BFFA65200742929 /* CriarExpectativaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7CF2BFFA65200742929 /* CriarExpectativaViewController.swift */; };
 		3B9DE7D22BFFA9A200742929 /* ExpectativaCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7D12BFFA9A200742929 /* ExpectativaCollectionViewCell.swift */; };
 		3B9DE7D42BFFAD6E00742929 /* ExpectativaCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7D32BFFAD6E00742929 /* ExpectativaCollectionDelegate.swift */; };
 		3B9DE7D62BFFAD8000742929 /* ExpectativaCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DE7D52BFFAD8000742929 /* ExpectativaCollectionDataSource.swift */; };
-		3BE3C93E2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3C93D2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift */; };
+		3BE3C93E2BF7C81600BCB14A /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE3C93D2BF7C81600BCB14A /* TextViewDelegate.swift */; };
 		3BE877A32BF51DDE000ABC38 /* TestesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */; };
 		3BE877A52BF545AA000ABC38 /* VisualizarNotaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */; };
 		3BE877A72BF554F1000ABC38 /* NotasCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE877A62BF554F1000ABC38 /* NotasCollectionDataSource.swift */; };
@@ -60,13 +60,13 @@
 		3B978A162BF3E360002E42B6 /* CriarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarNotaViewController.swift; sourceTree = "<group>"; };
 		3B978A192BF3F057002E42B6 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3B978A432BF40C08002E42B6 /* NotaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaCollectionViewCell.swift; sourceTree = "<group>"; };
-		3B9DE7C92BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarNotaViewTituloDelegate.swift; sourceTree = "<group>"; };
+		3B9DE7C92BFBBA5300742929 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		3B9DE7CD2BFD319000742929 /* GravarAudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GravarAudioViewController.swift; sourceTree = "<group>"; };
 		3B9DE7CF2BFFA65200742929 /* CriarExpectativaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarExpectativaViewController.swift; sourceTree = "<group>"; };
 		3B9DE7D12BFFA9A200742929 /* ExpectativaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectativaCollectionViewCell.swift; sourceTree = "<group>"; };
 		3B9DE7D32BFFAD6E00742929 /* ExpectativaCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectativaCollectionDelegate.swift; sourceTree = "<group>"; };
 		3B9DE7D52BFFAD8000742929 /* ExpectativaCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpectativaCollectionDataSource.swift; sourceTree = "<group>"; };
-		3BE3C93D2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriatNotaViewTextoDelegate.swift; sourceTree = "<group>"; };
+		3BE3C93D2BF7C81600BCB14A /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		3BE877A22BF51DDE000ABC38 /* TestesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestesViewController.swift; sourceTree = "<group>"; };
 		3BE877A42BF545A9000ABC38 /* VisualizarNotaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizarNotaViewController.swift; sourceTree = "<group>"; };
 		3BE877A62BF554F1000ABC38 /* NotasCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotasCollectionDataSource.swift; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				3BE877AA2BF557EA000ABC38 /* NotasCollectionDelegate.swift */,
-				3BE3C93D2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift */,
-				3B9DE7C92BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift */,
+				3B9DE7C92BFBBA5300742929 /* TextFieldDelegate.swift */,
+				3BE3C93D2BF7C81600BCB14A /* TextViewDelegate.swift */,
 				3B9DE7D32BFFAD6E00742929 /* ExpectativaCollectionDelegate.swift */,
 			);
 			path = Delegates;
@@ -328,8 +328,8 @@
 				3BE877AF2BF69015000ABC38 /* DataController.swift in Sources */,
 				3B978A1A2BF3F057002E42B6 /* Model.xcdatamodeld in Sources */,
 				3B22086E2BF2ABED00CF6865 /* AppDelegate.swift in Sources */,
-				3BE3C93E2BF7C81600BCB14A /* CriatNotaViewTextoDelegate.swift in Sources */,
-				3B9DE7CA2BFBBA5300742929 /* CriarNotaViewTituloDelegate.swift in Sources */,
+				3BE3C93E2BF7C81600BCB14A /* TextViewDelegate.swift in Sources */,
+				3B9DE7CA2BFBBA5300742929 /* TextFieldDelegate.swift in Sources */,
 				3B2208702BF2ABED00CF6865 /* SceneDelegate.swift in Sources */,
 				3B9DE7CE2BFD319000742929 /* GravarAudioViewController.swift in Sources */,
 				3B2208842BF2AE5300CF6865 /* GravacoesViewController.swift in Sources */,

@@ -14,12 +14,9 @@ class CriarNotaViewController: UIViewController {
     //Referencia para o objeto contexto
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    //A nota que vou escrever
-    var nota: Nota?
-    
     //Variáveis
-    var uiTituloViewDelegate = CriarNotaViewTituloDelegate()
-    var uiTextoViewDelegate = CriarNotaViewTextoDelegate()
+    var textFieldDelegate = TextFieldDelegate()
+    var textViewDelegate = TextViewDelegate()
     
     var alreadySaved = false
     
@@ -29,18 +26,6 @@ class CriarNotaViewController: UIViewController {
         var image = UIImageView(image: UIImage(named: "BackgroundShapes"))
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
-    }()
-    
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.text = "Hello world!"
-        label.textColor = .white
-        label.font = UIFont.systemFont(ofSize: 50)
-        label.translatesAutoresizingMaskIntoConstraints = false
-    
-        
-        return label
     }()
     
     var tituloTextField: UITextField = {
@@ -65,7 +50,7 @@ class CriarNotaViewController: UIViewController {
         return textField
     }()
     
-    var textoTextField: UITextView = {
+    var textoTextView: UITextView = {
         let textView = UITextView()
         
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -92,7 +77,7 @@ class CriarNotaViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         guard let titulo = tituloTextField.text else { return }
-        guard let texto = textoTextField.text else {return}
+        guard let texto = textoTextView.text else {return}
         
         //Se o título ou a notas estiver vazio, não salva
         if titulo != "" && (texto != "O que você está pensando?" || texto != "") && !alreadySaved{
@@ -127,19 +112,10 @@ class CriarNotaViewController: UIViewController {
         
     }
     
-    func setHelloWorld(){
-        self.view.addSubview(titleLabel)
-        
-        NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        ])
-    }
-    
     func setTituloTextField(){
         self.view.addSubview(tituloTextField)
         
-        tituloTextField.delegate = uiTituloViewDelegate
+        tituloTextField.delegate = textFieldDelegate
                 
         NSLayoutConstraint.activate([
             tituloTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -150,18 +126,18 @@ class CriarNotaViewController: UIViewController {
     }
     
     func setTextoTextField(){
-        self.view.addSubview(textoTextField)
+        self.view.addSubview(textoTextView)
         
-        self.textoTextField.delegate = uiTextoViewDelegate
+        self.textoTextView.delegate = textViewDelegate
         
         NSLayoutConstraint.activate([
-            textoTextField.leadingAnchor.constraint(equalTo: tituloTextField.leadingAnchor),
-            textoTextField.trailingAnchor.constraint(equalTo: tituloTextField.trailingAnchor),
-            textoTextField.topAnchor.constraint(equalTo: tituloTextField.bottomAnchor, constant: 10),
-            textoTextField.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            textoTextView.leadingAnchor.constraint(equalTo: tituloTextField.leadingAnchor),
+            textoTextView.trailingAnchor.constraint(equalTo: tituloTextField.trailingAnchor),
+            textoTextView.topAnchor.constraint(equalTo: tituloTextField.bottomAnchor, constant: 10),
+            textoTextView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
         ])
-        textoTextField.setContentHuggingPriority(.defaultLow, for: .vertical)
+        textoTextView.setContentHuggingPriority(.defaultLow, for: .vertical)
         
     }
     

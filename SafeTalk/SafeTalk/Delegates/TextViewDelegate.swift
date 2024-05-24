@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CriarNotaViewTextoDelegate: NSObject, UITextViewDelegate {
+class TextViewDelegate: NSObject, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.layer.opacity == 0.3 {
             textView.text = nil
