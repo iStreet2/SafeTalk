@@ -21,7 +21,7 @@ class TextViewDelegate: NSObject, UITextViewDelegate {
             textView.layer.opacity = 0.3
         }
     }
-
+    
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
@@ -32,3 +32,81 @@ class TextViewDelegate: NSObject, UITextViewDelegate {
     }
 }
 
+class ExpectativaTituloTextViewDelegate: NSObject, UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.layer.opacity == 0.3 {
+            textView.text = nil
+            textView.layer.opacity = 1
+        }
+    }
+    
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.layer.opacity == 1 && textView.text == ""{
+            textView.text = "Escreva sua expectativa"
+            textView.layer.opacity = 0.3
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    
+}
+
+class ExpectativaNomeTextViewDelegate: NSObject, UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.layer.opacity == 0.3 {
+            textView.text = nil
+            textView.layer.opacity = 1
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.layer.opacity == 1 && textView.text == ""{
+            textView.text = "Nome"
+            textView.layer.opacity = 0.3
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+}
+
+class ExpectativaTextoTextViewDelegate: NSObject, UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.layer.opacity == 0.3 {
+            textView.text = nil
+            textView.layer.opacity = 1
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.layer.opacity == 1 && textView.text == ""{
+            textView.text = "Eu espero que..."
+            textView.layer.opacity = 0.3
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+}

@@ -48,6 +48,7 @@ class ExpectativasViewController: UIViewController {
         setPlusButton()
         setDeleteAllDataButton()
         setExpectativas()
+        customizeBackButton()
     }
     
     func setNavigationTitle(){
@@ -86,6 +87,14 @@ class ExpectativasViewController: UIViewController {
             expectativasView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
+    }
+    
+    func customizeBackButton(){
+        let backImage = UIImage(systemName: "chevron.left")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
+        self.navigationController?.navigationBar.tintColor = .white
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
         
     //MARK: Funções de lógica

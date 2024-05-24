@@ -13,9 +13,9 @@ class CriarExpectativaViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //MARK: Variáveis
-    var textFieldDelegate = TextFieldDelegate()
-    var textViewDelegate = TextViewDelegate()
-    //Como eu quero o mesmo comportamento, posso utilizar os mesmos delegates
+    var tituloTextViewDelegate = ExpectativaTituloTextViewDelegate()
+    var nomeTextViewDelegate = ExpectativaNomeTextViewDelegate()
+    var textoTextViewDelegate = ExpectativaTextoTextViewDelegate()
     
     var alreadySaved = false
     
@@ -27,26 +27,24 @@ class CriarExpectativaViewController: UIViewController {
         return image
     }()
     
-    var tituloTextField: UITextField = {
+    var tituloTextField: UITextView = {
         
-        let textField = UITextField()
+        let textView = UITextView()
         
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textView.translatesAutoresizingMaskIntoConstraints = false
         
-        textField.font = UIFont(name: fonts.tsukimiSemiBold.rawValue, size: 34.15)
-        textField.tintColor = .white
-        textField.textColor = .white
-        textField.backgroundColor = .clear
-        textField.textAlignment  = .left
-        textField.layer.opacity = 0.3
-        textField.attributedPlaceholder = NSAttributedString(
-            string: "Escreve sua expectativa",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white,
-                        ]
-        )
+        textView.translatesAutoresizingMaskIntoConstraints = false
         
+        textView.font = UIFont(name: fonts.tsukimiSemiBold.rawValue, size: 32)
+        textView.tintColor = .white
+        textView.textColor = .white
+        textView.backgroundColor = .clear
+        textView.textAlignment  = .left
+        textView.textColor = .white
+        textView.text = "Escreva sua expectativa"
+        textView.layer.opacity = 0.3
         
-        return textField
+        return textView
     }()
     
     var nomeTextView: UITextView = {
@@ -108,8 +106,8 @@ class CriarExpectativaViewController: UIViewController {
         guard let texto = textoTextView.text else {return}
         
         //Se o título ou a notas estiver vazio, não salva
-        if titulo != "" && (texto != "O que você está pensando?" || texto != "") && !alreadySaved{
-            addExpectativa(titulo: titulo, nome: <#T##String#>, texto: texto)
+        if titulo != "" && (texto != "Eu espero que..." || texto != "") && !alreadySaved{
+            addExpectativa(titulo: titulo, nome: nome, texto: texto)
         }
         
         self.alreadySaved = true
@@ -143,27 +141,28 @@ class CriarExpectativaViewController: UIViewController {
     func setTituloTextField(){
         self.view.addSubview(tituloTextField)
         
-        tituloTextField.delegate = textFieldDelegate
+        tituloTextField.delegate = tituloTextViewDelegate
                 
         NSLayoutConstraint.activate([
             tituloTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             tituloTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            tituloTextField.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0)
+            tituloTextField.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0),
+            tituloTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/2.9)
         ])
-        tituloTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
+//        tituloTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
     
     func setNomeTextView(){
         self.view.addSubview(nomeTextView)
         
         //Esse é o delegate de UITextView
-        nomeTextView.delegate = textViewDelegate
+        nomeTextView.delegate = nomeTextViewDelegate
     }
     
     func setTextoTextView(){
         self.view.addSubview(textoTextView)
         
-        self.textoTextView.delegate = textViewDelegate
+        self.textoTextView.delegate = textoTextViewDelegate
         
         NSLayoutConstraint.activate([
             textoTextView.leadingAnchor.constraint(equalTo: tituloTextField.leadingAnchor),
@@ -172,7 +171,7 @@ class CriarExpectativaViewController: UIViewController {
             textoTextView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
         ])
-        textoTextView.setContentHuggingPriority(.defaultLow, for: .vertical)
+//        textoTextView.setContentHuggingPriority(.defaultLow, for: .vertical)
         
     }
     
