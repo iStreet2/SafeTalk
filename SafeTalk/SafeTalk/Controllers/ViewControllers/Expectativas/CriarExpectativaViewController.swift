@@ -106,7 +106,7 @@ class CriarExpectativaViewController: UIViewController {
         guard let texto = textoTextView.text else {return}
         
         //Se o título ou a notas estiver vazio, não salva
-        if titulo != "" && (texto != "Eu espero que..." || texto != "") && !alreadySaved{
+        if (titulo != "Escreva sua expectativa" && titulo != "") && (texto != "Eu espero que..." && texto != "") && !alreadySaved{
             addExpectativa(titulo: titulo, nome: nome, texto: texto)
         }
         
