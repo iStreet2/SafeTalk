@@ -8,7 +8,7 @@
 import UIKit
 
 class CriarExpectativaViewController: UIViewController {
-
+    
     //MARK: CoreData
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -83,16 +83,16 @@ class CriarExpectativaViewController: UIViewController {
         return textView
     }()
     
-//    var collectionView: UICollectionView = {
-//        
-//        let collection = UICollectionView()
-//        
-//        
-//        return collection
-//        
-//    }()
+    //    var collectionView: UICollectionView = {
+    //
+    //        let collection = UICollectionView()
+    //
+    //
+    //        return collection
+    //
+    //    }()
     
-
+    
     //MARK: LifeCicle
     
     override func viewDidLoad() {
@@ -142,14 +142,14 @@ class CriarExpectativaViewController: UIViewController {
         self.view.addSubview(tituloTextField)
         
         tituloTextField.delegate = tituloTextViewDelegate
-                
+        
         NSLayoutConstraint.activate([
             tituloTextField.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             tituloTextField.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
             tituloTextField.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 0),
             tituloTextField.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height/2.9)
         ])
-//        tituloTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        //        tituloTextField.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
     
     func setNomeTextView(){
@@ -171,7 +171,7 @@ class CriarExpectativaViewController: UIViewController {
             textoTextView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             
         ])
-//        textoTextView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        //        textoTextView.setContentHuggingPriority(.defaultLow, for: .vertical)
         
     }
     
@@ -190,6 +190,57 @@ class CriarExpectativaViewController: UIViewController {
         catch {
             print("Error ao salvar nova nota")
         }
+    }
+    
+    //MARK: Funções do teclado
+    private func setupKeyboardHiding(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(sender: NSNotification){
+        view.frame.origin.y += 200
+    }
+    
+//    @objc func keyboardWillShow(sender: NSNotification){
+//        print("aaaa")
+//        
+//        guard let userInfo = sender.userInfo,
+//              let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
+//              let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
+//        
+//        let keyboardTopY = keyboardFrame.cgRectValue.origin.y
+//        
+//        let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
+//        
+//        let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height + 200
+//        
+//        if textFieldBottomY > keyboardTopY {
+//            
+//            let textBoxY = convertedTextFieldFrame.origin.y
+//            let newFrameY = (textBoxY - keyboardTopY / 2) * -1
+//            view.frame.origin.y = newFrameY
+//        }
+//    }
+    
+    @objc func keyboardWillHide(sender: NSNotification){
+        view.frame.origin.y = 0
+    }
+    
+    
+}
+
+extension UIResponder {
+    private struct Static {
+        static weak var responder: UIResponder?
+    }
+    @objc private func _trap() {
+        Static.responder = self
+    }
+    static func currentFirst() -> UIResponder? {
+        Static.responder = nil
+        UIApplication.shared.sendAction(#selector(UIResponder._trap), to: nil, from: nil, for: nil)
+        return Static.responder
     }
 }
 

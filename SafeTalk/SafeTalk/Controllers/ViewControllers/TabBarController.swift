@@ -39,18 +39,18 @@ class TabBarController: UITabBarController {
             initBlur()
             
             //MARK: Para DEBUG TIRAR DEPOIIISS
-            isAuthenticated = .authenticated
-            setElements()
-            
-//            authenticateTapped() { result in
-//                
-//                if result == true{
-//                    if self.isAuthenticated == .authenticated {
-//                        self.setElements()
-//                    }
-//                }
-//                
-//            }
+//            isAuthenticated = .authenticated
+//            setElements()
+//            
+            authenticateTapped() { result in
+                
+                if result == true{
+                    if self.isAuthenticated == .authenticated {
+                        self.setElements()
+                    }
+                }
+                
+            }
         }
     }
     
